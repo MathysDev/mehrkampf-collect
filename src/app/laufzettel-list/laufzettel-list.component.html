@@ -1,0 +1,32 @@
+<table>
+  <thead>
+    <tr>
+      <th>StartNr.</th>
+      <th>Vorname</th>
+	  <th>Name</th>
+      <th>Sprint</th>
+	  <th>Weit</th>
+	  <th>Hoch</th>
+	  <th>Wertung4</th>
+	  <th>Wurf/Stoss</th>
+	  <th>1000er</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr *ngFor="let Teiln of Teilnehmer" (click)="editTeiln(Teiln)">
+   <td>{{ Teiln.payload.doc.data().StartNr }}</td>
+   <td>{{ Teiln.payload.doc.data().Vorname }}</td>
+   <td>{{ Teiln.payload.doc.data().Name }}</td>
+   <td>{{ Teiln.payload.doc.data().Wertung1 }}</td>
+   <td>{{ Teiln.payload.doc.data().Wertung2 }}</td>
+   <td>{{ Teiln.payload.doc.data().Wertung3 }}</td>
+   <td>{{ Teiln.payload.doc.data().Wertung4 }}</td>
+   <td>{{ Teiln.payload.doc.data().Wertung5 }}</td>
+   <td>{{ Teiln.payload.doc.data().Wertung6 }}</td>
+   <td [hidden]="!Teiln.payload.doc.data().completed" 
+     >
+    <i class="material-icons">check</i>
+</td>
+</tr>
+</tbody>
+</table>

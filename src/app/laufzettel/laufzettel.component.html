@@ -1,0 +1,76 @@
+<h5>Laufzettel</h5>   {{Teilnehmer.Kategorie}}<h6>
+{{Teilnehmer.StartNr}}
+  {{Teilnehmer.Name}}
+  {{Teilnehmer.Vorname}}</h6> 
+    
+<form [formGroup]="Laufzettelform">
+  <tr>
+   <label class="label-field col s1">{{Teilnehmer.Wertung1Bez}}</label>
+   
+   <label class="label-field col s1">{{Teilnehmer.Wertung2Bez}}</label>
+   
+   <label [hidden]="!Teilnehmer.Wertung3Bez" class="label-field col s1">{{Teilnehmer.Wertung3Bez}}</label>
+   
+   <label [hidden]="!Teilnehmer.Wertung4Bez" class="label-field col s1">{{Teilnehmer.Wertung4Bez}}</label>
+   <label class="label-field col s1">{{Teilnehmer.Wertung5Bez}}</label>
+   <label [hidden]="!Teilnehmer.Wertung6Bez" class="label-field col s1">{{Teilnehmer.Wertung6Bez}}</label></tr><tr>
+   <input autofocus
+   (keypress)="onKeyPress($event)"
+    class="input-field col s1"
+    placeholder="Wertung1"
+    formControlName="Wertung1"
+    type="number"
+		[(ngModel)]="Teilnehmer.Wertung1"
+
+  />
+  <input
+    class="input-field col s1"
+	(keypress)="onKeyPress($event)"
+    placeholder="Wertung2"
+    formControlName="Wertung2"
+    type="number"
+		[(ngModel)]="Teilnehmer.Wertung2"
+
+  />
+  <input [hidden]="!Teilnehmer.Wertung3Bez"
+  (keypress)="onKeyPress($event)"
+    class="input-field col s1"
+    placeholder="Wertung3"
+    formControlName="Wertung3"
+    type="number"
+		[(ngModel)]="Teilnehmer.Wertung3"
+
+  />
+  <input [hidden]="!Teilnehmer.Wertung4Bez"
+  (keypress)="onKeyPress($event)"
+  id="Wertung4"
+    class="input-field col s1"
+    placeholder="Wertung4"
+    formControlName="Wertung4"
+    type="number"
+		[(ngModel)]="Teilnehmer.Wertung4"
+
+  /><input
+    class="input-field col s1"
+	(keypress)="onKeyPress($event)"
+    placeholder="Wertung5"
+    formControlName="Wertung5"
+    type="number"
+		[(ngModel)]="Teilnehmer.Wertung5"
+
+  /><input [hidden]="!Teilnehmer.Wertung6Bez"
+  (keypress)="onKeyPress($event)"
+    class="input-field col s1"
+    placeholder="Wertung6"
+    formControlName="Wertung6"
+    type="number"
+		[(ngModel)]="Teilnehmer.Wertung6"
+
+  /></tr>
+  <button class="waves-effect waves-light btn col s3" (click)="onSubmit()">
+    Speichern
+  </button>
+  <button class="waves-effect waves-light btn col s3" (click)="cancel()">
+    Abbrechen
+  </button>
+</form>

@@ -1,0 +1,11 @@
+<form [formGroup]="this.form" id="getstartnrform">
+<input autofocus placeholder="Startnummer" formControlName="startnr" id = "startnr" type ="number" [(ngModel)]="startnr"  class="input-field col s6" />
+
+<button class="waves-effect waves-light btn col s6" (click)="onSubmit()">
+    Öffnen
+  </button>
+  <button class="waves-effect waves-light btn col s6" (click)="getList()">
+    Liste anzeigen
+  </button>
+  <br><div style="color:red" *ngIf="Startnummerfehlt">Bitte Startnummer eingeben</div>
+</form>
