@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "mehrkampf-collect",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

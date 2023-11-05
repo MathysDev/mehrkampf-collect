@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "kadettentage-9816c": {
+      "hosting": {
+        "mehrkampf-collect": [
+          "kadettentage-9816c"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "kadettentage-9816c"
+  }
+}

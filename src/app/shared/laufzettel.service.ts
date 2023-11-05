@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormControl, FormGroup , ReactiveFormsModule  } from "@angular/forms";
+import { UntypedFormControl, UntypedFormGroup , ReactiveFormsModule  } from "@angular/forms";
 import { AngularFirestore } from '@angular/fire/firestore';
 import { NgAuthService } from "../auth.service";
 
@@ -10,17 +10,17 @@ import { NgAuthService } from "../auth.service";
 export class LaufzettelService {
 
 constructor(private firestore: AngularFirestore) {}
-    form = new FormGroup({        
-        Vorname: new FormControl(""),
-        StartNr: new FormControl(""),
-        Name: new FormControl(""), 
-        completed: new FormControl(false),
-		Wertung1: new FormControl(false),
-		Wertung2: new FormControl(false),
-		Wertung3: new FormControl(false),
-		Wertung4: new FormControl(false),
-		Wertung5: new FormControl(false),
-		Wertung6: new FormControl(false)
+    form = new UntypedFormGroup({        
+        Vorname: new UntypedFormControl(""),
+        StartNr: new UntypedFormControl(""),
+        Name: new UntypedFormControl(""), 
+        completed: new UntypedFormControl(false),
+		Wertung1: new UntypedFormControl(false),
+		Wertung2: new UntypedFormControl(false),
+		Wertung3: new UntypedFormControl(false),
+		Wertung4: new UntypedFormControl(false),
+		Wertung5: new UntypedFormControl(false),
+		Wertung6: new UntypedFormControl(false)
     });
 	
 	getUserKorp() {

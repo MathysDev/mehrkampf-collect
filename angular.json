@@ -103,9 +103,18 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2,
+            "browserTarget": "mehrkampf-collect:build:production"
+          }
         }
       }
     }
   },
-  "defaultProject": "mehrkampf-collect"
+  "cli": {
+    "analytics": false
+  }
 }

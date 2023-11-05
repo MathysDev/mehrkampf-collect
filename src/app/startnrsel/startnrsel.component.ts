@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, FormControl, FormsModule , ReactiveFormsModule } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, FormControl, FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { LaufzettelService } from "../shared/laufzettel.service";
 
 
@@ -14,10 +14,10 @@ import { LaufzettelService } from "../shared/laufzettel.service";
 
 
 export class StartnrselComponent implements OnInit {
-	form!: FormGroup;
+	form!: UntypedFormGroup;
 	startnr :string = "";
 	Startnummerfehlt: boolean = false;
-  constructor(private router: Router , private fb: FormBuilder , private ls: LaufzettelService){ }
+  constructor(private router: Router , private fb: UntypedFormBuilder , private ls: LaufzettelService){ }
 
 
   ngOnInit(): void {

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { LaufzettelService } from "../shared/laufzettel.service";
 import { NgForm } from "@angular/forms";
 import { ActivatedRoute } from '@angular/router';
-import {FormGroup } from '@angular/forms';
+import {UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-laufzettel',
@@ -15,7 +15,7 @@ import {FormGroup } from '@angular/forms';
  
 export class LaufzettelComponent implements OnInit {
 id !: any;
-public Laufzettelform : FormGroup;
+public Laufzettelform : UntypedFormGroup;
   constructor(public laufzettelService: LaufzettelService, private route: ActivatedRoute, private router: Router) {
 this.Laufzettelform = laufzettelService.form	  }
 Teilnehmer;
