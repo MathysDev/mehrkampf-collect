@@ -1,7 +1,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import firebase from "firebase/app"
-import "firebase/auth"
-import { AngularFireAuth } from "@angular/fire/auth";
+import { Auth, GoogleAuthProvider, signInWithPopup, signOut, user,onAuthStateChanged ,getAuth ,signInWithEmailAndPassword } from  '@angular/fire/auth';
+
 import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
 
@@ -22,12 +22,18 @@ export class NgAuthService {
     userState: any;
 
     constructor(
+      public afAuth: Auth,
       public afs: Firestore,
-      public afAuth: AngularFireAuth,
+      
       public router: Router,
       public ngZone: NgZone
+      
     ) {
-      this.afAuth.authState.subscribe(user => {
+      
+
+const auth = getAuth();
+
+      onAuthStateChanged(auth,user => {
         if (user) {
           this.userState = user;
           localStorage.setItem('user', JSON.stringify(this.userState));
@@ -40,7 +46,8 @@ export class NgAuthService {
     }
   
     SignIn(email, password) {
-      return this.afAuth.signInWithEmailAndPassword(email, password)
+      const auth = getAuth();
+      return signInWithEmailAndPassword(auth,email, password)
         .then((result) => {
           this.ngZone.run(() => {
             this.router.navigate(['start']);
@@ -55,14 +62,7 @@ export class NgAuthService {
 
 
   
-    ForgotPassword(passwordResetEmail) {
-      return this.afAuth.sendPasswordResetEmail(passwordResetEmail)
-      .then(() => {
-        window.alert('Password reset email sent, check your inbox.');
-      }).catch((error) => {
-        window.alert(error)
-      })
-    }
+    
   
     get isLoggedIn(): boolean {
       const user = JSON.parse(localStorage.getItem('user') || '{}');
