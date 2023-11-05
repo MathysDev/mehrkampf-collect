@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import { environment } from "src/environments/environment";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule, getFirestore, provideFirestore } from "@angular/fire/firestore";
-import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFireAuthModule, getAuth, provideAuth } from "@angular/fire/auth";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -42,7 +42,8 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 	ReactiveFormsModule ,
 	AngularFireAuthModule,
  provideFirebaseApp(() => initializeApp({"projectId":"kadettentage-9816c","appId":"1:280870830430:web:69a4cb6a5c0b7b4c200fcf","storageBucket":"kadettentage-9816c.appspot.com","locationId":"europe-west6","apiKey":"AIzaSyBnag-gwVNFJDSEd_KaDEK1w0U7wURFwzE","authDomain":"kadettentage-9816c.firebaseapp.com","messagingSenderId":"280870830430"})),
- provideFirestore(() => getFirestore())
+ provideFirestore(() => getFirestore()),
+ provideAuth(() => getAuth())
 	
   ],
   providers: [ LaufzettelService, NgAuthService],
