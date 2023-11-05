@@ -2,7 +2,7 @@ import { Injectable, NgZone } from '@angular/core';
 import firebase from "firebase/app"
 import "firebase/auth"
 import { AngularFireAuth } from "@angular/fire/auth";
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
 
 export interface User {
@@ -22,7 +22,7 @@ export class NgAuthService {
     userState: any;
 
     constructor(
-      public afs: AngularFirestore,
+      public afs: Firestore,
       public afAuth: AngularFireAuth,
       public router: Router,
       public ngZone: NgZone

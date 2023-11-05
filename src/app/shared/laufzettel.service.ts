@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup , ReactiveFormsModule  } from "@angular/forms";
-import { AngularFirestore } from '@angular/fire/firestore';
+import { Firestore } from '@angular/fire/firestore';
 import { NgAuthService } from "../auth.service";
 
 
@@ -9,7 +9,7 @@ import { NgAuthService } from "../auth.service";
 })
 export class LaufzettelService {
 
-constructor(private firestore: AngularFirestore) {}
+constructor(private firestore: Firestore) {}
     form = new UntypedFormGroup({        
         Vorname: new UntypedFormControl(""),
         StartNr: new UntypedFormControl(""),

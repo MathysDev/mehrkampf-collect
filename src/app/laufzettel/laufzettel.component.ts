@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { LaufzettelService } from "../shared/laufzettel.service";
-import { NgForm } from "@angular/forms";
+import { FormsModule,ReactiveFormsModule  } from "@angular/forms";
 import { ActivatedRoute } from '@angular/router';
 import {UntypedFormGroup } from '@angular/forms';
 
