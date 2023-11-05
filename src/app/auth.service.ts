@@ -71,17 +71,6 @@ const auth = getAuth();
   
 
   
-    AuthLogin(provider) {
-      return this.afAuth.signInWithPopup(provider)
-      .then((result) => {
-         this.ngZone.run(() => {
-            this.router.navigate(['start']);
-          })
-        this.SetUserData(result.user);
-      }).catch((error) => {
-        window.alert(error)
-      })
-    }
   
     SetUserData(user) {
       const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
