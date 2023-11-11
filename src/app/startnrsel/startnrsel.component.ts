@@ -17,7 +17,7 @@ export class StartnrselComponent implements OnInit {
 	form!: UntypedFormGroup;
 	startnr :string = "";
 	Startnummerfehlt: boolean = false;
-  constructor(private router: Router , private fb: UntypedFormBuilder , private ls: LaufzettelService){ }
+  constructor(private router: Router , private fb: UntypedFormBuilder ){ }
 
 
   ngOnInit(): void {

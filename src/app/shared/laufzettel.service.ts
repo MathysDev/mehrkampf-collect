@@ -3,7 +3,7 @@ import { UntypedFormControl, UntypedFormGroup , ReactiveFormsModule  } from "@an
 import { Firestore,collection,updateDoc, doc,docData,collectionData} from '@angular/fire/firestore';
 
 
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 
 
@@ -16,12 +16,12 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class LaufzettelService {
-
-constructor(private firestore: Firestore,private afs: Firestore) {
+afs: Firestore;
+constructor( ) {
 	
-	
-
+this.afs = inject(Firestore);
 }
+
     form = new UntypedFormGroup({        
         Vorname: new UntypedFormControl(""),
         StartNr: new UntypedFormControl(""),
@@ -54,17 +54,17 @@ constructor(private firestore: Firestore,private afs: Firestore) {
 		
 		usermail = user.email
 		usermailu = usermail.toUpperCase()
-		//console.log(usermailu.substr(0,1));
-		return usermailu.substr(0,1);
+		//console.log(usermailu.substring(0,1));
+		return usermailu.substring(0,1);
 	}
 	
 	 getTeilnehmer() {
 		if (this.getUserKorp() == "A" ){
 			console.log(this.getUserKorp())
 			
-			return collectionData(collection(this.firestore,"Teilnehmer") );
+			return collectionData(collection(this.afs,"Teilnehmer") );
 		}else {
-			return collectionData(collection(this.firestore,"Teilnehmer")) ;
+			return collectionData(collection(this.afs,"Teilnehmer")) ;
 		
 		
 		}
@@ -82,7 +82,7 @@ constructor(private firestore: Firestore,private afs: Firestore) {
 
 
 getTeilnehmerid(id: BigInteger) {
-			return  docData(doc(this.firestore, 'Teilnehmer/' + id))
+			return  docData(doc(this.afs, 'Teilnehmer/' + id))
 			
 		
 		
@@ -91,7 +91,7 @@ getTeilnehmerid(id: BigInteger) {
 	updateLaufzettel(data,id) {
 		data.completed = true;
 			
-			updateDoc(doc(this.firestore, 'Teilnehmer',id),data);
+			updateDoc(doc(this.afs, 'Teilnehmer',id),data);
 			
 	}
 	}
