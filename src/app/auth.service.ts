@@ -8,7 +8,7 @@ import { doc } from '@angular/fire/firestore';
 import { DocumentReference, DocumentData } from '@firebase/firestore-types';
 import { provideFirebaseApp, initializeApp,FirebaseApp } from '@angular/fire/app';
 import { environment } from "src/environments/environment";
-
+import {LaufzettelService} from "./shared/laufzettel.service";
 
 
 export interface User {
@@ -26,9 +26,10 @@ export interface User {
 
 export class AuthService {
     userState: any;
+    userRef: any;
 auth: Auth;
     constructor(
-      
+      private afs: LaufzettelService,
       private afApp: FirebaseApp,
       
       public router: Router,
@@ -75,7 +76,7 @@ auth: Auth;
 
 
     async SetUserData(user: User) {
-      //const userRef: DocumentReference<User> = doc(this.afs,`users/${user.uid}`);
+      
       const userState: User = {
         uid: user.uid,
         email: user.email,
@@ -83,7 +84,8 @@ auth: Auth;
         photoURL: user.photoURL,
         emailVerified: user.emailVerified
       }
-      
+      const userData =  userState ; // convert to plain JavaScript object
+      this.afs.insertUser(userData,user.uid);
     }
 
     SignOut() {

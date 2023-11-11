@@ -82,6 +82,12 @@ getTeilnehmerid(id: BigInteger) {
 			updateDoc(doc(this.afs, 'Teilnehmer',id),data);
 			
 	}
+	insertUser(data,id)
+	{
+		console.log(data);
+		console.log(id);
+		updateDoc(doc(this.afs, 'users',id),data);
+	}
 	}
 	 
 	
