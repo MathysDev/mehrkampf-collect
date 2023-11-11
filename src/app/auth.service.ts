@@ -21,7 +21,7 @@ export interface User {
  }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 
 export class AuthService {
@@ -38,8 +38,7 @@ export class AuthService {
       
 
       const app = initializeApp(environment.firebaseConfig);
-
-const auth = getAuth();
+      const auth = getAuth(app);
 
       onAuthStateChanged(auth,user => {
         if (user) {
@@ -68,18 +67,12 @@ const auth = getAuth();
   
 
 
-
-  
-    
   
     get isLoggedIn(): boolean {
       const user = JSON.parse(localStorage.getItem('user') || '{}');
       return (user !== null && user.emailVerified !== false) ? true : false;
     }
   
-
-  
-
 
 
     async SetUserData(user: User) {

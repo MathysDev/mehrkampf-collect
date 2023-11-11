@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AuthService } from "./auth.service";
 import { RouterModule } from '@angular/router';
-
+import { Auth } from  '@angular/fire/auth';
 import { environment } from "src/environments/environment";
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { connectAuthEmulator, getAuth, provideAuth } from '@angular/fire/auth';
@@ -20,8 +20,6 @@ import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import 'init';
 
-
-import 'firebase/auth';
 
 
 
@@ -45,7 +43,7 @@ import 'firebase/auth';
     
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
   ],
-  providers: [ LaufzettelService],
+  providers: [ LaufzettelService,AuthService,Auth],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

@@ -2,7 +2,7 @@
 import { UntypedFormControl, UntypedFormGroup , ReactiveFormsModule  } from "@angular/forms";
 import { Firestore,collection,updateDoc, doc,docData,collectionData} from '@angular/fire/firestore';
 
-import { AuthService } from "../auth.service";
+
 import { Injectable } from '@angular/core';
 
 
