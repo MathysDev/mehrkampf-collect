@@ -5,7 +5,7 @@ import { AuthService } from "./auth.service";
 import { RouterModule } from '@angular/router';
 import { Auth } from  '@angular/fire/auth';
 import { environment } from "src/environments/environment";
-import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { provideFirebaseApp, initializeApp  } from '@angular/fire/app';
 import { connectAuthEmulator, getAuth, provideAuth } from '@angular/fire/auth';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -42,11 +42,12 @@ import 'init';
     ReactiveFormsModule,
     
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+
+    
   ],
-  providers: [ LaufzettelService,AuthService,Auth],
+  providers: [ LaufzettelService],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
-
 
 }

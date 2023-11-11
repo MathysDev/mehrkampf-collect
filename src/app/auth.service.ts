@@ -1,12 +1,12 @@
 import { Injectable, NgZone } from '@angular/core';
 import firebase from "firebase/app"
-import { Auth, GoogleAuthProvider, signInWithPopup, signOut, user,onAuthStateChanged ,getAuth ,signInWithEmailAndPassword } from  '@angular/fire/auth';
+import {  GoogleAuthProvider, signInWithPopup, signOut, user,onAuthStateChanged ,getAuth ,signInWithEmailAndPassword,Auth } from  '@angular/fire/auth';
 
 import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
 import { doc } from '@angular/fire/firestore';
 import { DocumentReference, DocumentData } from '@firebase/firestore-types';
-import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { provideFirebaseApp, initializeApp,FirebaseApp } from '@angular/fire/app';
 import { environment } from "src/environments/environment";
 
 
@@ -26,21 +26,20 @@ export interface User {
 
 export class AuthService {
     userState: any;
-
+auth: Auth;
     constructor(
-      public afAuth: Auth,
-      public afs: Firestore,
+      
+      private afApp: FirebaseApp,
       
       public router: Router,
-      public ngZone: NgZone
+      public ngZone: NgZone,
+     )
+     {
       
-    ) {
+      this.auth = getAuth(this.afApp)
       
 
-      const app = initializeApp(environment.firebaseConfig);
-      const auth = getAuth(app);
-
-      onAuthStateChanged(auth,user => {
+      onAuthStateChanged(this.auth,user => {
         if (user) {
           this.userState = user;
           localStorage.setItem('user', JSON.stringify(this.userState));
@@ -88,7 +87,8 @@ export class AuthService {
     }
 
     SignOut() {
-      return this.afAuth.signOut().then(() => {
+      const auth = getAuth();
+      return signOut(auth).then(() => {
         localStorage.removeItem('user');
         this.router.navigate(['sign-in']);
       })
