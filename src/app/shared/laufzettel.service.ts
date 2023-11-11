@@ -1,7 +1,7 @@
 
 import { UntypedFormControl, UntypedFormGroup , ReactiveFormsModule  } from "@angular/forms";
 import { Firestore,collection,updateDoc, doc,docData,collectionData} from '@angular/fire/firestore';
-
+import { AuthService} from "../auth.service";
 
 import { Injectable, inject } from '@angular/core';
 
@@ -17,7 +17,7 @@ import { map } from 'rxjs/operators';
 })
 export class LaufzettelService {
 afs: Firestore;
-constructor( ) {
+constructor(AuthService: AuthService ) {
 	
 this.afs = inject(Firestore);
 }
@@ -62,9 +62,9 @@ this.afs = inject(Firestore);
 		if (this.getUserKorp() == "A" ){
 			console.log(this.getUserKorp())
 			
-			return collectionData(collection(this.afs,"Teilnehmer") );
+			return collectionData(collection(this.afs,'Teilnehmer') );
 		}else {
-			return collectionData(collection(this.afs,"Teilnehmer")) ;
+			return collectionData(collection(this.afs,'Teilnehmer')) ;
 		
 		
 		}
