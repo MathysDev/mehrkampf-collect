@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "mehrkampf-collect:build:production"
+              "buildTarget": "mehrkampf-collect:build:production"
             },
             "development": {
-              "browserTarget": "mehrkampf-collect:build:development"
+              "buildTarget": "mehrkampf-collect:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "mehrkampf-collect:build"
+            "buildTarget": "mehrkampf-collect:build"
           }
         },
         "test": {
