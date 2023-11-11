@@ -26,7 +26,7 @@ export class LaufzettelListComponent implements OnInit {
 			.subscribe(res =>( this.Teilnehmer = res ));
 		
 	editTeiln(Teiln) {
-		this.router.navigateByUrl('/laufzettel/'  + Teiln.payload.doc.data().StartNr);
+		this.router.navigateByUrl('/laufzettel/'  + Teiln.StartNr);
 	
 	}		
 }

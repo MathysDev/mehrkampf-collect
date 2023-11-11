@@ -14,16 +14,16 @@
   </thead>
   <tbody>
 <tr *ngFor="let Teiln of Teilnehmer" (click)="editTeiln(Teiln)">
-   <td>{{ Teiln.payload.doc.data().StartNr }}</td>
-   <td>{{ Teiln.payload.doc.data().Vorname }}</td>
-   <td>{{ Teiln.payload.doc.data().Name }}</td>
-   <td>{{ Teiln.payload.doc.data().Wertung1 }}</td>
-   <td>{{ Teiln.payload.doc.data().Wertung2 }}</td>
-   <td>{{ Teiln.payload.doc.data().Wertung3 }}</td>
-   <td>{{ Teiln.payload.doc.data().Wertung4 }}</td>
-   <td>{{ Teiln.payload.doc.data().Wertung5 }}</td>
-   <td>{{ Teiln.payload.doc.data().Wertung6 }}</td>
-   <td [hidden]="!Teiln.payload.doc.data().completed" 
+  <td>{{ Teiln.StartNr }}</td>
+   <td>{{ Teiln.Vorname }}</td>
+   <td>{{ Teiln.Name }}</td>
+   <td>{{ Teiln.Wertung1 }}</td>
+   <td>{{ Teiln.Wertung2 }}</td>
+   <td>{{ Teiln.Wertung3 }}</td>
+   <td>{{ Teiln.Wertung4 }}</td>
+   <td>{{ Teiln.Wertung5 }}</td>
+   <td>{{ Teiln.Wertung6 }}</td>
+   <td [hidden]="!Teiln.completed" 
      >
     <i class="material-icons">check</i>
 </td>
