@@ -1,11 +1,11 @@
 import { LaufzettelService } from "./shared/laufzettel.service";
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgAuthService } from "./auth.service";
+import { AuthService } from "./auth.service";
 import { RouterModule } from '@angular/router';
 
 import { environment } from "src/environments/environment";
-import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { connectAuthEmulator, getAuth, provideAuth } from '@angular/fire/auth';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,12 +17,16 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { StartnrselComponent } from './startnrsel/startnrsel.component';
 import { LoginComponent } from './login/login.component';
+import { HttpClientModule } from '@angular/common/http';
+import 'init';
 
 
+import 'firebase/auth';
 
 
 
 @NgModule({
+
   declarations: [
     AppComponent,
     TeilnehmerComponent,
@@ -36,12 +40,10 @@ import { LoginComponent } from './login/login.component';
     RouterModule,
     FormsModule,
     AppRoutingModule,
-     
-	ReactiveFormsModule 
-	
- 
-  
-	
+    HttpClientModule,
+    ReactiveFormsModule,
+    
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
   ],
   providers: [ LaufzettelService],
   bootstrap: [AppComponent]

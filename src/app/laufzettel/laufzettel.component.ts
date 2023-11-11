@@ -14,7 +14,7 @@ import {UntypedFormGroup } from '@angular/forms';
 
  
 export class LaufzettelComponent implements OnInit {
-id !: any;
+  id! : any
 public Laufzettelform : UntypedFormGroup;
   constructor(public laufzettelService: LaufzettelService, private route: ActivatedRoute, private router: Router) {
 this.Laufzettelform = laufzettelService.form	  }
@@ -24,20 +24,16 @@ StartNr: string = "";
   
     //const id = this.route.snapshot.queryParamMap.get('id');
     //console.log(id); // Pepperoni
-	this.route.paramMap.subscribe(params => { 
-    //this.laufzettelService.form.value.Teilnehmer = this.laufzettelService.getTeilnehmerid( params.get('id')); 
-	//this.laufzettelService.getTeilnehmerid( params.get('id')).then(data=>console.log(data));
-	//this.laufzettelService.getTeilnehmerid( params.get('id')).then(data=> this.Teilnehmer);
-	this.id = params.get('id');
-	this.Teilnehmer = [];
-	//this.laufzettelService.getTeilnehmerid(this.id).subscribe(res=>(this.Teilnehmer = res));
-	this.laufzettelService.getTeilnehmerid( params.get('id')).then(res=> (this.Teilnehmer = res),
-	
-	);
-	
-	
+this.route.paramMap.subscribe(params => { 
+  this.id = params.get('id');
+  this.Teilnehmer = [];
+  if (this.id) {
+    this.laufzettelService.getTeilnehmerid(this.id).subscribe(res => {
+      this.Teilnehmer = res;
+    });
+  }
 });
-console.log( this.id);
+console.log(this.id);
 
   }
   

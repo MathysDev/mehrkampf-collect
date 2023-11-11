@@ -1,7 +1,15 @@
-import { Injectable } from '@angular/core';
+
 import { UntypedFormControl, UntypedFormGroup , ReactiveFormsModule  } from "@angular/forms";
-import { Firestore } from '@angular/fire/firestore';
-import { NgAuthService } from "../auth.service";
+import { Firestore,collection,updateDoc, doc,docData,collectionData} from '@angular/fire/firestore';
+
+import { AuthService } from "../auth.service";
+import { Injectable } from '@angular/core';
+
+
+
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 
 
 @Injectable({
@@ -9,7 +17,11 @@ import { NgAuthService } from "../auth.service";
 })
 export class LaufzettelService {
 
-constructor(private firestore: Firestore) {}
+constructor(private firestore: Firestore,private afs: Firestore) {
+	
+	
+
+}
     form = new UntypedFormGroup({        
         Vorname: new UntypedFormControl(""),
         StartNr: new UntypedFormControl(""),
@@ -39,6 +51,7 @@ constructor(private firestore: Firestore) {}
 		//})
 		var usermail: String
 		var usermailu: String
+		
 		usermail = user.email
 		usermailu = usermail.toUpperCase()
 		//console.log(usermailu.substr(0,1));
@@ -48,26 +61,41 @@ constructor(private firestore: Firestore) {}
 	 getTeilnehmer() {
 		if (this.getUserKorp() == "A" ){
 			console.log(this.getUserKorp())
-			return this.firestore.collection("Teilnehmer").snapshotChanges();
+			
+			return collectionData(collection(this.firestore,"Teilnehmer") );
 		}else {
-			return this.firestore.collection("Teilnehmer", ref => ref.where("Korp", "==", this.getUserKorp() )).snapshotChanges();
+			return collectionData(collection(this.firestore,"Teilnehmer")) ;
+		
 		
 		}
 		
 	}
-	 getTeilnehmerid(id) {
-			return  this.firestore.collection("Teilnehmer").doc(id).ref.get().then(function(doc: any) { return doc.data()});
+
+	@Injectable({
+		providedIn: 'root'
+	})
+
+
+		
+		
+
+
+
+getTeilnehmerid(id: BigInteger) {
+			return  docData(doc(this.firestore, 'Teilnehmer/' + id))
 			
 		
 		
 		
 	}
-	
 	updateLaufzettel(data,id) {
 		data.completed = true;
-			this.firestore
-			.collection("Teilnehmer")
-			.doc(id)
-			.update(data);
+			
+			updateDoc(doc(this.firestore, 'Teilnehmer',id),data);
+			
 	}
-}
+	}
+	 
+	
+
+

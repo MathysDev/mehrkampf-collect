@@ -4,12 +4,18 @@ import { Auth, GoogleAuthProvider, signInWithPopup, signOut, user,onAuthStateCha
 
 import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
+import { doc } from '@angular/fire/firestore';
+import { DocumentReference, DocumentData } from '@firebase/firestore-types';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { environment } from "src/environments/environment";
+
+
 
 export interface User {
     uid: string;
-    email: string;
-    displayName: string;
-    photoURL: string;
+    email: string |null;
+    displayName: string |null;
+    photoURL: string | null;
     emailVerified: boolean;
 	
  }
@@ -18,7 +24,7 @@ export interface User {
   providedIn: 'root'
 })
 
-export class NgAuthService {
+export class AuthService {
     userState: any;
 
     constructor(
@@ -30,6 +36,8 @@ export class NgAuthService {
       
     ) {
       
+
+      const app = initializeApp(environment.firebaseConfig);
 
 const auth = getAuth();
 
@@ -71,22 +79,21 @@ const auth = getAuth();
   
 
   
-  
-    SetUserData(user) {
-      const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+
+
+
+    async SetUserData(user: User) {
+      //const userRef: DocumentReference<User> = doc(this.afs,`users/${user.uid}`);
       const userState: User = {
         uid: user.uid,
         email: user.email,
         displayName: user.displayName,
         photoURL: user.photoURL,
         emailVerified: user.emailVerified
-		
       }
-      return userRef.set(userState, {
-        merge: true
-      })
+      
     }
-   
+
     SignOut() {
       return this.afAuth.signOut().then(() => {
         localStorage.removeItem('user');
