@@ -15,10 +15,12 @@ import {UntypedFormGroup } from '@angular/forms';
  
 export class LaufzettelComponent implements OnInit {
   id! : any
+  list!: any
 public Laufzettelform : UntypedFormGroup;
   constructor(public laufzettelService: LaufzettelService, private route: ActivatedRoute, private router: Router) {
 this.Laufzettelform = laufzettelService.form	  }
 Teilnehmer;
+
 StartNr: string = "";
   ngOnInit() { 
   
@@ -44,7 +46,11 @@ console.log(this.id);
 	
   }
   cancel() {
+    if (this.list){
 	  this.router.navigateByUrl('/start'  );
+    } else {
+      this.router.navigateByUrl('/list'  );
+    }
   }
   onKeyPress(event: any) {
     const regexpNumber = /[0-9\,\.\ ]/;
@@ -52,6 +58,9 @@ console.log(this.id);
     if (event.keyCode != 8 && !regexpNumber.test(inputCharacter)) {
       event.preventDefault();
     }
+  }
+  start() {
+    this.router.navigateByUrl('/start'  );
   }
 
 }

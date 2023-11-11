@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
 { path: 'laufzettel/:id', component: LaufzettelComponent } ,
+{ path: 'laufzettel/:id/:list', component: LaufzettelComponent } ,
 { path: 'list', component: LaufzettelListComponent } ,
 { path: 'start', component: StartnrselComponent } ,
 { path: '', redirectTo: 'login', pathMatch: 'full'} ,

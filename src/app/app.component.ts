@@ -12,4 +12,5 @@ export class AppComponent {
 
 
 public isOn: boolean = false;
+
 }

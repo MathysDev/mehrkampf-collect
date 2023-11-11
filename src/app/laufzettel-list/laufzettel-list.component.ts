@@ -9,11 +9,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./laufzettel-list.component.scss']
 })
 export class LaufzettelListComponent implements OnInit {
-
+	
   constructor(private laufzettelService: LaufzettelService, private router: Router) { }
 
   ngOnInit()  {
-	  
+	
 	  this.getTeilnehmer();
 	  }
 	Teilnehmer;
@@ -26,7 +26,7 @@ export class LaufzettelListComponent implements OnInit {
 			.subscribe(res =>( this.Teilnehmer = res ));
 		
 	editTeiln(Teiln) {
-		this.router.navigateByUrl('/laufzettel/'  + Teiln.StartNr);
+		this.router.navigateByUrl('/laufzettel/'  + Teiln.StartNr + '/1');
 	
 	}		
 }
