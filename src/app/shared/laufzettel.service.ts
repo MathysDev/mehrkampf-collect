@@ -40,15 +40,7 @@ this.afs = inject(Firestore);
 		
 		var Korp: string
 		
-		//this.firestore.collection("users").doc(user.uid).ref.get().then(function(doc: any) {
-			
-			//	console.log( doc.data().Korp);
-			//	Korp = doc.data().Korp;
-			////	return Korp;
-				
-				
-				
-		//})
+	
 		var usermail: String
 		var usermailu: String
 		
@@ -76,10 +68,6 @@ this.afs = inject(Firestore);
 	})
 
 
-		
-		
-
-
 
 getTeilnehmerid(id: BigInteger) {
 			return  docData(doc(this.afs, 'Teilnehmer/' + id))
@@ -90,12 +78,10 @@ getTeilnehmerid(id: BigInteger) {
 	}
 	updateLaufzettel(data,id) {
 		data.completed = true;
-			
+		data.lastWriteTime = new Date();	
 			updateDoc(doc(this.afs, 'Teilnehmer',id),data);
 			
 	}
 	}
 	 
 	
-
-
