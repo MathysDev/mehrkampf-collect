@@ -1,14 +1,9 @@
 
 import { UntypedFormControl, UntypedFormGroup , ReactiveFormsModule  } from "@angular/forms";
-import { Firestore,collection,updateDoc, doc,docData,collectionData} from '@angular/fire/firestore';
+import { Firestore,collection,updateDoc, doc,docData,collectionData,query,where} from '@angular/fire/firestore';
 import { AuthService} from "../auth.service";
 
 import { Injectable, inject } from '@angular/core';
-
-
-
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 
 
@@ -38,9 +33,6 @@ this.afs = inject(Firestore);
 	getUserKorp() {
 		const user = JSON.parse(localStorage.getItem('user') || '{}');
 		
-		var Korp: string
-		
-	
 		var usermail: String
 		var usermailu: String
 		
@@ -50,17 +42,13 @@ this.afs = inject(Firestore);
 		return usermailu.substring(0,1);
 	}
 	
-	 getTeilnehmer() {
-		if (this.getUserKorp() == "A" ){
-			console.log(this.getUserKorp())
-			
-			return collectionData(collection(this.afs,'Teilnehmer') );
-		}else {
-			return collectionData(collection(this.afs,'Teilnehmer')) ;
-		
-		
+	getTeilnehmer() {
+		if (this.getUserKorp() == "A") {
+			console.log(this.getUserKorp());
+			return collectionData(collection(this.afs, 'Teilnehmer'));
+		} else {
+			return collectionData(query(collection(this.afs,'Teilnehmer'),where('Korp','==',this.getUserKorp())));
 		}
-		
 	}
 
 	@Injectable({
@@ -84,8 +72,7 @@ getTeilnehmerid(id: BigInteger) {
 	}
 	insertUser(data,id)
 	{
-		//console.log(data);
-		//console.log(id);
+
 		updateDoc(doc(this.afs, 'users',id),data);
 	}
 	}

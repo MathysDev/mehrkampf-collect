@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Router } from '@angular/router';
 import { LaufzettelService } from "../shared/laufzettel.service";
-import { FormsModule,ReactiveFormsModule  } from "@angular/forms";
 import { ActivatedRoute } from '@angular/router';
 import {UntypedFormGroup } from '@angular/forms';
+import { OfflineService } from '../shared/offline.service';
 
 @Component({
   selector: 'app-laufzettel',
@@ -17,15 +16,14 @@ export class LaufzettelComponent implements OnInit {
   id! : any
   list!: any
 public Laufzettelform : UntypedFormGroup;
-  constructor(public laufzettelService: LaufzettelService, private route: ActivatedRoute, private router: Router) {
+  constructor(public laufzettelService: LaufzettelService, private route: ActivatedRoute, private router: Router,public of: OfflineService) {
 this.Laufzettelform = laufzettelService.form	  }
 Teilnehmer;
 
 StartNr: string = "";
   ngOnInit() { 
   
-    //const id = this.route.snapshot.queryParamMap.get('id');
-    //console.log(id); // Pepperoni
+
 this.route.paramMap.subscribe(params => { 
   this.id = params.get('id');
   this.Teilnehmer = [];
@@ -42,7 +40,12 @@ console.log(this.id);
   
 	 onSubmit() {
 		this.laufzettelService.updateLaufzettel(this.Teilnehmer,this.id)
-		this.router.navigateByUrl('/start'  );
+
+		if (this.list){
+	  this.router.navigateByUrl('/start'  );
+    } else {
+      this.router.navigateByUrl('/list'  );
+    }
 	
   }
   cancel() {

@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UntypedFormGroup, UntypedFormBuilder, FormControl, FormsModule , ReactiveFormsModule } from '@angular/forms';
-import { LaufzettelService } from "../shared/laufzettel.service";
+import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
+import {  OnDestroy,  VERSION } from '@angular/core';
 
+import { fromEvent, merge, of, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { OfflineService } from '../shared/offline.service';
 
 
 
@@ -17,14 +20,22 @@ export class StartnrselComponent implements OnInit {
 	form!: UntypedFormGroup;
 	startnr :string = "";
 	Startnummerfehlt: boolean = false;
-  constructor(private router: Router , private fb: UntypedFormBuilder ){ }
+	
+	networkStatus: boolean = true;
 
-
+  constructor(private router: Router , private fb: UntypedFormBuilder ,public of: OfflineService ){ }
+  
+  
+ 
   ngOnInit(): void {
 	
 	this.form = this.fb.group({ startnr: [null] })  
+	this.of.checkNetworkStatus()
 	
+	
+  	
 	}
+	
 	onSubmit(){
 	
     if (this.startnr) {
@@ -33,13 +44,15 @@ export class StartnrselComponent implements OnInit {
     	this.Startnummerfehlt = true;
 	}
 	}
+
+	
 	getList(){
 	
-      
+    
       
      
 	this.router.navigateByUrl('/list'  );
 	}
-	
+
 }
 
