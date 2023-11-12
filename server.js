@@ -10,7 +10,7 @@ const prodContent = '${process.env.FIREBASE_APIKEY_PRD}';
 
 fs.access(dir,fs.constants.F_OK, (err) => {
     if (err) {
-        console.log("src/environments does not exist", process.cwd()9,
+        console.log("src/environments does not exist", process.cwd()),
         fs.mkdir(dir, {recursive: true}, (err) => {
             if (err) {
                 console.error(err);
