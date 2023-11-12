@@ -24,6 +24,10 @@ fs.access(dir,fs.constants.F_OK, (err) => {
         fs.writeFileSync(dir + "/" + prodFile, prodContent);
         if (fs.existsSync(dir + "/" + file)) {
             console.log("src/environments/environment.ts created");
+            const str = fs.readFileSync(dir + "/" + file).toString();
+            console.log(str);
+            const strprd = fs.readFileSync(dir + "/" + prodFile).toString();
+            console.log(strprd);
         }
     } catch (err) {
         console.error(err);
