@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import {  OnDestroy,  VERSION } from '@angular/core';
-
+import { ActivatedRoute } from '@angular/router';
 import { fromEvent, merge, of, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { OfflineService } from '../shared/offline.service';
@@ -20,15 +20,16 @@ export class StartnrselComponent implements OnInit {
 	form!: UntypedFormGroup;
 	startnr :string = "";
 	Startnummerfehlt: boolean = false;
-	
+	notfound!: any;
 	networkStatus: boolean = true;
 
-  constructor(private router: Router , private fb: UntypedFormBuilder ,public of: OfflineService ){ }
+  constructor(private router: Router , private fb: UntypedFormBuilder ,public of: OfflineService,private route: ActivatedRoute ){ }
   
   
  
   ngOnInit(): void {
-	
+	this.route.paramMap.subscribe(params => { 
+	this.notfound = params.get('notfound');});
 	this.form = this.fb.group({ startnr: [null] })  
 	this.of.checkNetworkStatus()
 	
@@ -49,8 +50,6 @@ export class StartnrselComponent implements OnInit {
 	getList(){
 	
     
-      
-     
 	this.router.navigateByUrl('/list'  );
 	}
 

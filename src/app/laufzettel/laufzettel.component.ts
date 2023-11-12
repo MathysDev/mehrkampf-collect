@@ -14,7 +14,7 @@ import { OfflineService } from '../shared/offline.service';
  
 export class LaufzettelComponent implements OnInit {
   id! : any
-  list!: any
+  list!: any 
 public Laufzettelform : UntypedFormGroup;
   constructor(public laufzettelService: LaufzettelService, private route: ActivatedRoute, private router: Router,public of: OfflineService) {
 this.Laufzettelform = laufzettelService.form	  }
@@ -26,22 +26,28 @@ StartNr: string = "";
 
 this.route.paramMap.subscribe(params => { 
   this.id = params.get('id');
+  this.list = params.get('list');
   this.Teilnehmer = [];
   if (this.id) {
     this.laufzettelService.getTeilnehmerid(this.id).subscribe(res => {
-      this.Teilnehmer = res;
+      if (res) {
+        this.Teilnehmer = res;
+      } else {
+        console.error('No result found for Teilnehmer with id', this.id);
+        this.router.navigateByUrl('start/'+this.id  );
+      }
     });
   }
 });
 console.log(this.id);
-
+console.log('Herkunft ist list',this.list)
   }
   
   
 	 onSubmit() {
 		this.laufzettelService.updateLaufzettel(this.Teilnehmer,this.id)
 
-		if (this.list){
+		if (this.list !== '1'){
 	  this.router.navigateByUrl('/start'  );
     } else {
       this.router.navigateByUrl('/list'  );
@@ -49,7 +55,8 @@ console.log(this.id);
 	
   }
   cancel() {
-    if (this.list){
+    console.log('Herkunft ist list',this.list)
+    if (this.list !== '1'){
 	  this.router.navigateByUrl('/start'  );
     } else {
       this.router.navigateByUrl('/list'  );
