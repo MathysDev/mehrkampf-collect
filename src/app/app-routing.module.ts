@@ -10,6 +10,7 @@ const routes: Routes = [
 { path: 'laufzettel/:id/:list', component: LaufzettelComponent } ,
 { path: 'list', component: LaufzettelListComponent } ,
 { path: 'start', component: StartnrselComponent } ,
+{ path: 'start/:notfound', component: StartnrselComponent } ,
 { path: '', redirectTo: 'login', pathMatch: 'full'} ,
 { path: 'login', component: LoginComponent} 
 ];

@@ -1,0 +1,26 @@
+
+.getstartnrform {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    // adjust spacing between buttons
+    button {
+        margin-top: 1rem;
+        min-width: 100px; // set minimum width to 100px
+    }
+
+    // media query for small screens
+    @media (max-width: 768px) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+        // adjust spacing between buttons
+        button {
+            margin: 0 0.5rem;
+            margin-top: 1rem;
+            min-width: 80px; // set minimum width to 80px for small screens
+        }
+    }
+}

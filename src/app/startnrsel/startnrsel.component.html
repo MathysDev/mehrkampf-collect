@@ -14,3 +14,7 @@
 <div class="offline" *ngIf="!of.networkStatus">
 <p>ACHTUNG: Du bist aktuell Offline. Neue Eingaben werden später synchronisiert.</p>
 </div>
+
+<div class="notFoud" *ngIf="notfound">
+  <p>Die Startnummer {{notfound}} ist nicht bekannt.</p>
+  </div>

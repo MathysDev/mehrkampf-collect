@@ -74,10 +74,11 @@
     Abbrechen
   </button>
   <br><br>
-  <button [disabled]="list == 1" class="waves-effect waves-light btn col s3" (click)="start()">
+  <div class="buttonStart"  *ngIf="this.list">
+  <button  class="waves-effect waves-light btn col s3" (click)="start()">
     Zum Start 
   </button>
-
+</div>
 </form>
 
 <br><br>  
