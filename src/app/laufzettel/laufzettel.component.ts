@@ -39,7 +39,12 @@ console.log(this.id);
   
 	 onSubmit() {
 		this.laufzettelService.updateLaufzettel(this.Teilnehmer,this.id)
-		this.router.navigateByUrl('/start'  );
+
+		if (this.list){
+	  this.router.navigateByUrl('/start'  );
+    } else {
+      this.router.navigateByUrl('/list'  );
+    }
 	
   }
   cancel() {
