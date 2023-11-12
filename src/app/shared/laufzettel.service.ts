@@ -1,6 +1,6 @@
 
 import { UntypedFormControl, UntypedFormGroup , ReactiveFormsModule  } from "@angular/forms";
-import { Firestore,collection,updateDoc, doc,docData,collectionData} from '@angular/fire/firestore';
+import { Firestore,collection,updateDoc, doc,docData,collectionData,query,where} from '@angular/fire/firestore';
 import { AuthService} from "../auth.service";
 
 import { Injectable, inject } from '@angular/core';
@@ -42,17 +42,13 @@ this.afs = inject(Firestore);
 		return usermailu.substring(0,1);
 	}
 	
-	 getTeilnehmer() {
-		if (this.getUserKorp() == "A" ){
-			console.log(this.getUserKorp())
-			
-			return collectionData(collection(this.afs,'Teilnehmer') );
-		}else {
-			return collectionData(collection(this.afs,'Teilnehmer')) ;
-		
-		
+	getTeilnehmer() {
+		if (this.getUserKorp() == "A") {
+			console.log(this.getUserKorp());
+			return collectionData(collection(this.afs, 'Teilnehmer'));
+		} else {
+			return collectionData(query(collection(this.afs,'Teilnehmer'),where('Korp','==',this.getUserKorp())));
 		}
-		
 	}
 
 	@Injectable({
