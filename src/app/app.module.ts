@@ -1,13 +1,12 @@
-import { LaufzettelService } from "./shared/laufzettel.service";
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AuthService } from "./auth.service";
+
 import { RouterModule } from '@angular/router';
-import { Auth } from  '@angular/fire/auth';
+
 import { environment } from "src/environments/environment";
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import {  provideFirestore, getFirestore } from '@angular/fire/firestore';
-import { connectAuthEmulator, getAuth, provideAuth } from '@angular/fire/auth';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';

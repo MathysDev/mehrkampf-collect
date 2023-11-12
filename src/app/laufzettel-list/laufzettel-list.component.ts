@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { LaufzettelService } from "../shared/laufzettel.service";
-
 import { Router } from '@angular/router';
 
 @Component({
