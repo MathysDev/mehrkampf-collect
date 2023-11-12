@@ -22,8 +22,7 @@ Teilnehmer;
 StartNr: string = "";
   ngOnInit() { 
   
-    //const id = this.route.snapshot.queryParamMap.get('id');
-    //console.log(id); // Pepperoni
+
 this.route.paramMap.subscribe(params => { 
   this.id = params.get('id');
   this.Teilnehmer = [];

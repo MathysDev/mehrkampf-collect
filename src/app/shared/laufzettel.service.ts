@@ -33,9 +33,6 @@ this.afs = inject(Firestore);
 	getUserKorp() {
 		const user = JSON.parse(localStorage.getItem('user') || '{}');
 		
-		var Korp: string
-		
-	
 		var usermail: String
 		var usermailu: String
 		
@@ -79,8 +76,7 @@ getTeilnehmerid(id: BigInteger) {
 	}
 	insertUser(data,id)
 	{
-		//console.log(data);
-		//console.log(id);
+
 		updateDoc(doc(this.afs, 'users',id),data);
 	}
 	}

@@ -7,7 +7,7 @@ import { Router } from "@angular/router";
 import { doc } from '@angular/fire/firestore';
 import { DocumentReference, DocumentData } from '@firebase/firestore-types';
 import { provideFirebaseApp, initializeApp,FirebaseApp } from '@angular/fire/app';
-import { environment } from "src/environments/environment";
+import { environment } from "src/environments/environment" ;
 import {LaufzettelService} from "./shared/laufzettel.service";
 
 
