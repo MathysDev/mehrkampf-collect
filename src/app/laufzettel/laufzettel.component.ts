@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LaufzettelService } from "../shared/laufzettel.service";
 import { ActivatedRoute } from '@angular/router';
 import {UntypedFormGroup } from '@angular/forms';
+import { OfflineService } from '../shared/offline.service';
 
 @Component({
   selector: 'app-laufzettel',
@@ -15,7 +16,7 @@ export class LaufzettelComponent implements OnInit {
   id! : any
   list!: any
 public Laufzettelform : UntypedFormGroup;
-  constructor(public laufzettelService: LaufzettelService, private route: ActivatedRoute, private router: Router) {
+  constructor(public laufzettelService: LaufzettelService, private route: ActivatedRoute, private router: Router,public of: OfflineService) {
 this.Laufzettelform = laufzettelService.form	  }
 Teilnehmer;
 

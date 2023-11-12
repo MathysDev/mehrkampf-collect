@@ -79,3 +79,8 @@
   </button>
 
 </form>
+
+<br><br>  
+<div class="offline" *ngIf="!of.networkStatus">
+  <p>ACHTUNG: Du bist aktuell Offline. Neue Eingaben werden später synchronisiert.</p>
+  </div>
