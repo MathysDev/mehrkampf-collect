@@ -5,18 +5,18 @@
     
 <form [formGroup]="Laufzettelform">
   <tr>
-   <label class="label-field col s1">{{Teilnehmer.Wertung1Bez}}</label>
+   <label class="label-field col s2">{{Teilnehmer.Wertung1Bez}}</label>
    
-   <label class="label-field col s1">{{Teilnehmer.Wertung2Bez}}</label>
+   <label class="label-field col s2">{{Teilnehmer.Wertung2Bez}}</label>
    
-   <label [hidden]="!Teilnehmer.Wertung3Bez" class="label-field col s1">{{Teilnehmer.Wertung3Bez}}</label>
+   <label [hidden]="!Teilnehmer.Wertung3Bez" class="label-field col s2">{{Teilnehmer.Wertung3Bez}}</label>
    
-   <label [hidden]="!Teilnehmer.Wertung4Bez" class="label-field col s1">{{Teilnehmer.Wertung4Bez}}</label>
-   <label class="label-field col s1">{{Teilnehmer.Wertung5Bez}}</label>
-   <label [hidden]="!Teilnehmer.Wertung6Bez" class="label-field col s1">{{Teilnehmer.Wertung6Bez}}</label></tr><tr>
+   <label [hidden]="!Teilnehmer.Wertung4Bez" class="label-field col s2">{{Teilnehmer.Wertung4Bez}}</label>
+   <label class="label-field col s2">{{Teilnehmer.Wertung5Bez}}</label>
+   <label [hidden]="!Teilnehmer.Wertung6Bez" class="label-field col s2">{{Teilnehmer.Wertung6Bez}}</label></tr><tr>
    <input autofocus
    (keypress)="onKeyPress($event)"
-    class="input-field col s1"
+    class="input-field col s2"
     placeholder="Wertung1"
     formControlName="Wertung1"
     type="number"
@@ -24,7 +24,7 @@
 
   />
   <input
-    class="input-field col s1"
+    class="input-field col s2"
 	(keypress)="onKeyPress($event)"
     placeholder="Wertung2"
     formControlName="Wertung2"
@@ -34,7 +34,7 @@
   />
   <input [hidden]="!Teilnehmer.Wertung3Bez"
   (keypress)="onKeyPress($event)"
-    class="input-field col s1"
+    class="input-field col s2"
     placeholder="Wertung3"
     formControlName="Wertung3"
     type="number"
@@ -44,14 +44,14 @@
   <input [hidden]="!Teilnehmer.Wertung4Bez"
   (keypress)="onKeyPress($event)"
   id="Wertung4"
-    class="input-field col s1"
+    class="input-field col s2"
     placeholder="Wertung4"
     formControlName="Wertung4"
     type="number"
 		[(ngModel)]="Teilnehmer.Wertung4"
 
   /><input
-    class="input-field col s1"
+    class="input-field col s2"
 	(keypress)="onKeyPress($event)"
     placeholder="Wertung5"
     formControlName="Wertung5"
@@ -60,7 +60,7 @@
 
   /><input [hidden]="!Teilnehmer.Wertung6Bez"
   (keypress)="onKeyPress($event)"
-    class="input-field col s1"
+    class="input-field col s2"
     placeholder="Wertung6"
     formControlName="Wertung6"
     type="number"
