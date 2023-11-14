@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
+
 import {  OnDestroy,  VERSION, AfterViewInit } from '@angular/core';
+
+
+
 import { ActivatedRoute } from '@angular/router';
 import { fromEvent, merge, of, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -23,6 +27,7 @@ export class StartnrselComponent implements OnInit, AfterViewInit  {
 	Startnummerfehlt: boolean = false;
 	notfound!: any;
 	networkStatus: boolean = true;
+
 	@ViewChild("mystartnr") myStartnrField: ElementRef | undefined;
 	
   constructor(private router: Router , private fb: UntypedFormBuilder ,public of: OfflineService,private route: ActivatedRoute ,private el: ElementRef){ }
@@ -39,6 +44,7 @@ export class StartnrselComponent implements OnInit, AfterViewInit  {
  
   ngOnInit(): void {
 	this.route.paramMap.subscribe(params => { 
+
 	this.notfound = params.get('notfound');
 
 	
