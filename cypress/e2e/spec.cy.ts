@@ -7,18 +7,9 @@ describe('Startup', () => {
     cy.contains('Signin')
   })
 })
-import { environment } from '../../src/environments/environment';
 
-try {
-  // Your existing code here
-  var testuserID: string = environment.firebaseConfig.testUser1ID;
-  var testuserlength: number = testuserID.length;
-  if (testuserlength == 0) {
-    console.error('Error: testUser1ID not defined in environment');
-  }
-} catch (error) {
-  console.error('Error:', error);
-}
+
+
 describe('Basic Tests', () => {
 
   beforeEach(() => {
@@ -37,8 +28,8 @@ describe('Basic Tests', () => {
     cy.visit('/login'); // replace with your login page URL
 
     // replace 'input[name="username"]' and 'input[name="password"]' with your actual username and password input selectors
-    cy.get('input[name="username"]').type(environment.firebaseConfig.testUser1ID);
-    cy.get('input[name="password"]').type(environment.firebaseConfig.testUser1PW);
+    cy.get('input[name="username"]').type(Cypress.env('testUser1ID'));
+    cy.get('input[name="password"]').type(Cypress.env('testUser1PW'));
 
     // replace 'button[type="submit"]' with your actual login button selector
     cy.get('input[name="signin"]').click();

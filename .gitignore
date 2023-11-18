@@ -58,3 +58,5 @@ src/environments/environment.ts
 /src/environments/*
 src/environments/environment.ts
 /src/environments/environment.ts
+cypress/cypress.env.json
+cypress.env.json
