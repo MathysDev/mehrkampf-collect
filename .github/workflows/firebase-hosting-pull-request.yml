@@ -16,7 +16,7 @@ jobs:
       - run: npm ci --force && npm run build --force
       - name: Run End2End Tests
         working-directory: cypress/e2e/
-        run: node server.js && npm run e2e
+        run: npm run e2e
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
