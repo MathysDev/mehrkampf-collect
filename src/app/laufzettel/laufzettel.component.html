@@ -14,7 +14,7 @@
    <label [hidden]="!Teilnehmer.Wertung4Bez" class="label-field col s2">{{Teilnehmer.Wertung4Bez}}</label>
    <label class="label-field col s2">{{Teilnehmer.Wertung5Bez}}</label>
    <label [hidden]="!Teilnehmer.Wertung6Bez" class="label-field col s2">{{Teilnehmer.Wertung6Bez}}</label></tr><tr>
-   <input autofocus
+   <input name="Wertung1" autofocus
    (keypress)="onKeyPress($event)"
     class="input-field col s2"
     placeholder="Wertung1"
@@ -67,10 +67,10 @@
 		[(ngModel)]="Teilnehmer.Wertung6"
 
   /></tr>
-  <button class="waves-effect waves-light btn col s3" (click)="onSubmit()">
+  <button name="submit" class="waves-effect waves-light btn col s3" (click)="onSubmit()">
     Speichern
   </button>
-  <button class="waves-effect waves-light btn col s3" (click)="cancel()">
+  <button name="cancel" class="waves-effect waves-light btn col s3" (click)="cancel()">
     Abbrechen
   </button>
   <br><br>

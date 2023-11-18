@@ -1,10 +1,10 @@
 <form [formGroup]="this.form" id="getstartnrform">
-<input #mystartnr autofocus placeholder="Startnummer" formControlName="startnr"  id = "startnr" type ="number" [(ngModel)]="startnr"  class="input-field col s6" />
+<input #mystartnr autofocus placeholder="Startnummer" formControlName="startnr" name="startnr"  id = "startnr" type ="number" [(ngModel)]="startnr"  class="input-field col s6" />
 
-<button class="waves-effect waves-light btn col s6" (click)="onSubmit()">
+<button name="Laufzettel" class="waves-effect waves-light btn col s6" (click)="onSubmit()">
     Öffnen
   </button>
-  <button class="waves-effect waves-light btn col s6" (click)="getList()">
+  <button name="list" class="waves-effect waves-light btn col s6" (click)="getList()">
     Liste anzeigen
   </button>
   <br><div style="color:red" *ngIf="Startnummerfehlt">Bitte Startnummer eingeben</div>

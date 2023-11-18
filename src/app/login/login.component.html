@@ -4,15 +4,15 @@
     <div class="authBlock">
       <h3>Signin</h3>
       <div class="formGroup">
-        <input autofocus type="text" class="form-control" placeholder="Username" #userName required>
+        <input name="username" autofocus type="text" class="form-control" placeholder="Username" #userName required>
       </div>
 
       <div class="formGroup">
-        <input type="password" class="form-control" placeholder="Password" #userPassword required>
+        <input name="password" type="password" class="form-control" placeholder="Password" #userPassword required>
       </div>
 
       <div class="formGroup">
-        <input type="button" class="btn btn-primary btn-block" value="Sign in"
+        <input name="signin" type="button" class="btn btn-primary btn-block" value="Sign in"
           (click)="ngAuthService.SignIn(userName.value, userPassword.value)">
       </div>
 
