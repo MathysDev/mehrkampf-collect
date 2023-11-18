@@ -31,6 +31,8 @@ fs.access(dir,fs.constants.F_OK, (err) => {
             console.log(str);
             const strprd = fs.readFileSync(dir + "/" + prodFile).toString();
             console.log(strprd);
+            const strc = fs.readFileSync(cypressFile).toString();
+            console.log(strc);
         }
     } catch (err) {
         console.error(err);
