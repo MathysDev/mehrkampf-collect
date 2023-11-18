@@ -15,6 +15,7 @@ jobs:
           FIREBASE_DETAILS: '${{secrets.FIREBASE_APIKEY_PRD}}'
       - run: npm ci --force && npm run build --force
       - name: Run End2End Tests
+        working-directory: cypress/e2e/
         run: npm run e2e
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
