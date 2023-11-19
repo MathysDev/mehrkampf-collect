@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LaufzettelService } from "../shared/laufzettel.service";
 import { Router } from '@angular/router';
+import { AuthService } from "../auth.service";
 
 @Component({
   selector: 'app-laufzettel-list',
@@ -9,12 +10,19 @@ import { Router } from '@angular/router';
 })
 export class LaufzettelListComponent implements OnInit {
 	
-  constructor(private laufzettelService: LaufzettelService, private router: Router) { }
+  constructor(private auth: AuthService,private laufzettelService: LaufzettelService, private router: Router) { }
 
-  ngOnInit()  {
+ngOnInit() {
+	if (!this.auth.isLoggedIn) {
+		console.log('not logged in');
+		this.router.navigateByUrl('/login');
+		return; // Exit the method here
+	} else {
+		console.log('logged in');
+		this.getTeilnehmer();
+	}
 	
-	  this.getTeilnehmer();
-	  }
+}
 	Teilnehmer;
 	Korp = this.laufzettelService.getUserKorp();
 	

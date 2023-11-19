@@ -4,7 +4,7 @@ import { UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 
 import {  OnDestroy,  VERSION, AfterViewInit } from '@angular/core';
 
-
+import { AuthService } from '../auth.service';
 
 import { ActivatedRoute } from '@angular/router';
 import { fromEvent, merge, of, Subscription } from 'rxjs';
@@ -30,7 +30,7 @@ export class StartnrselComponent implements OnInit, AfterViewInit  {
 
 	@ViewChild("mystartnr") myStartnrField: ElementRef | undefined;
 	
-  constructor(private router: Router , private fb: UntypedFormBuilder ,public of: OfflineService,private route: ActivatedRoute ,private el: ElementRef){ }
+  constructor(private auth: AuthService, private router: Router , private fb: UntypedFormBuilder ,public of: OfflineService,private route: ActivatedRoute ,private el: ElementRef){ }
   
 	ngAfterViewInit() {
 		console.log('loaded startnrsel');
@@ -46,9 +46,16 @@ export class StartnrselComponent implements OnInit, AfterViewInit  {
 	this.route.paramMap.subscribe(params => { 
 
 	this.notfound = params.get('notfound');
+});
+if (!this.auth.isLoggedIn) {
+	console.log('not logged in');
+		this.router.navigateByUrl('/login');
+	} else {
+		console.log('logged in');
+	}
 
 	
-});
+
 	this.form = this.fb.group({ startnr: [null] })  
 	this.of.checkNetworkStatus()
 	
