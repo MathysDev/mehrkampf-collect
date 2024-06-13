@@ -41,16 +41,16 @@ import 'init';
     HttpClientModule,
     ReactiveFormsModule,
     
-    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    
+
+    
+  ],
+  providers: [provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideFirestore(() => {
       const  firestore = getFirestore();
       
       return  firestore;
-}),
-
-    
-  ],
-  providers: [ ],
+}), ],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
