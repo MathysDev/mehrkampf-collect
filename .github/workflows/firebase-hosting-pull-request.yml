@@ -9,12 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
       - run: node server.js
         env: 
           FIREBASE_DETAILS: '${{secrets.FIREBASE_APIKEY_PRD}}'
           CYPRESS_ENV: '${{secrets.CYPRESS_ENV}}'
-      - run: npm ci  && npm run build 
+      - run: npm ci --force && npm run build --force
       - name: Run End2End Tests
         working-directory: cypress/e2e/
         run: npm run e2e
